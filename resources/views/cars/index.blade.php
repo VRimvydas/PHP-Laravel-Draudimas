@@ -5,30 +5,39 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Savininkai</div>
+                    <div class="card-header">Automobiliai</div>
 
                     <div class="card-body">
-                        <a href="{{ route("owners.create") }}" class="btn btn-success float-start">Sukurti savininką</a>
+                        <a href="{{ route("cars.create") }}" class="btn btn-success float-start">Kurti naują</a>
                         <table class="table">
                             <thead>
                             <tr>
-                                <th>Vardas</th>
-                                <th>Pavardė</th>
+                                <th>Valst. numeris</th>
+                                <th>Markė</th>
+                                <th>Modelis</th>
+                                <th>Savininkas</th>
                                 <th></th>
                                 <th></th>
 
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($owners as $owner)
+                            @foreach($cars as $car)
                                 <tr>
-                                    <td>{{ $owner->name }} </td>
-                                    <td>{{ $owner->surname }} </td>
-                                    <td style="width: 200px;">
-                                        <a href="{{ route("owners.update", $owner->id) }}" class="btn btn-success">Redaguoti</a>
+                                    <td>{{ $car->reg_number }} </td>
+                                    <td>{{ $car->brand }} </td>
+                                    <td>{{ $car->model }} </td>
+                                    <td>{{ $car->owner->name }} {{$car->owner->surname }} </td>
+                                    <td >
+                                        <a href="{{ route("cars.edit", $car->id) }}" class="btn btn-success">Redaguoti</a>
                                     </td>
                                     <td>
-                                        <a href="{{ route('owners.delete', $owner->id) }}" class="btn btn-danger">Ištrinti</a>
+                                        <form method="post" action="{{ route("cars.destroy", $car->id) }}">
+                                            @csrf
+                                            @method("DELETE")
+                                            <button class="btn btn-danger">Ištrinti</button>
+                                        </form>
+
                                     </td>
                                 </tr>
 

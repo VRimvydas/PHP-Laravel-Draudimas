@@ -14,8 +14,10 @@
                             <tr>
                                 <th>Vardas</th>
                                 <th>Pavardė</th>
+                                <th>Automobiliai</th>
                                 <th></th>
-                                
+                                <th></th>
+
                             </tr>
                             </thead>
                             <tbody>
@@ -23,8 +25,16 @@
                                 <tr>
                                     <td>{{ $owner->name }} </td>
                                     <td>{{ $owner->surname }} </td>
-                                    <td style="width: 200px;">
+                                    <td>@foreach($owner->cars as $car)
+                                             {{$car->brand}} {{$car->model}} <br>
+                                    @endforeach
+
+                                    </td>
+
+                                    <td >
                                         <a href="{{ route("owners.update", $owner->id) }}" class="btn btn-success">Redaguoti</a>
+                                    </td>
+                                    <td>
                                         <a href="{{ route('owners.delete', $owner->id) }}" class="btn btn-danger">Ištrinti</a>
                                     </td>
                                 </tr>

@@ -23,8 +23,15 @@
                             <button class="btn btn-success">Išsaugoti</button>
                         </form>
 
-
                     </div>
+                </div>
+                <div class="mt-3">
+                    Savininko {{ $owner->name }} {{ $owner->surname }} turimi automobiliai: <br>
+
+                    @foreach($owner->cars as $car)
+                        {{$car->brand}} {{$car->model}} <br>
+                    @endforeach
+
                 </div>
             </div>
         </div>
