@@ -7,10 +7,20 @@ use Illuminate\Http\Request;
 
 class OwnerController extends Controller
 {
-    public function owners(){
-        $owners=Owner::all();
+    public function owners(Request $request){
+        $name=$request->session()->get('owner_name');
+        $surname=$request->session()->get('owner_surname');
+
+        $owners=Owner::with('cars');
+        if ($name || $surname != null){
+            $owners->where('name','like', "%$name%");
+            $owners->where('surname','like', "%$surname%");
+        }
+            $owners=$owners->orderBy('name')->get();
         return view("owners.list", [
-            "owners"=>$owners
+            "owners"=>$owners,
+            "name"=>$name,
+            "surname"=>$surname
             ]);
     }
 
@@ -44,5 +54,13 @@ class OwnerController extends Controller
     public function delete($id){
         Owner::destroy($id);
         return redirect()->route("owners.list");
+    }
+
+    public function search(Request $request){
+        $request->session()->put('owner_name', $request->name);
+        $request->session()->put('owner_surname', $request->surname);
+        return redirect()->route('owners.list');
+
+
     }
 }

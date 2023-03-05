@@ -8,7 +8,38 @@
                     <div class="card-header">Automobiliai</div>
 
                     <div class="card-body">
-                        <a href="{{ route("cars.create") }}" class="btn btn-success float-start">Kurti naują</a>
+                        <div class="clearfix">
+                            <a href="{{ route("cars.create") }}" class="btn btn-success float-start">Kurti naują</a>
+                        </div>
+
+                        <hr >
+                        <form method="post" action="{{ route('cars.search') }}">
+                            @csrf
+                            <div class="mb-3">
+                                <label class="form-label">Valst. numeris</label>
+                                <input class="form-control" type="text" name="reg_number" value="{{ $reg_number }}" >
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Markė</label>
+                                <input class="form-control" type="text" name="brand" value="{{ $brand }}" >
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Modelis</label>
+                                <input class="form-control" type="text" name="model" value="{{ $model }}" >
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Savininkas</label>
+                                <select class="form-select" name="owner_id">
+                                    @foreach($owners as $owner)
+                                        <option value="{{$owner->id}}">{{$owner->id}} {{$owner->name}} {{$owner->surname}} </option>
+                                    @endforeach
+                                </select>
+
+                            </div>
+                            <button class="btn btn-info">Ieškoti</button>
+                        </form>
+                        <hr>
                         <table class="table">
                             <thead>
                             <tr>

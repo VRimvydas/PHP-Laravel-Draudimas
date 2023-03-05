@@ -27,7 +27,7 @@
 
                             </div>
                             <div class="mb-3">
-                                <label class="form-label">Savininko ID</label>
+                                <label class="form-label">Savininkas</label>
                                 <select class="form-select" name="owner_id">
                                     @foreach($owners as $owner)
                                         <option value="{{$owner->id}}"{{ ($owner->id==$car->owner_id)?'selected':'' }}>{{$owner->name}} {{$owner->surname}} </option>
