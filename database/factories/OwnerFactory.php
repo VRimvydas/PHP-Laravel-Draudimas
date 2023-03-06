@@ -23,7 +23,7 @@ class OwnerFactory extends Factory
 
         return [
 
-            'name'=> fake()->firstName,
+            'name'=> fake('lt_LT')->firstName,
             'surname' => fake()->lastName
 
         ];

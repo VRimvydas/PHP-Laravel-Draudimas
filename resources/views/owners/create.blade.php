@@ -12,13 +12,21 @@
                             @csrf
                             <div class="mb-3">
                                 <label class="form-label">Vardas</label>
-                                <input type="text" class="form-control" name="name">
-
+                                <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}">
+                                @error('name')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Pavardė</label>
-                                <input type="text" class="form-control" name="surname">
-
+                                <input type="text" class="form-control @error('surname') is-invalid @enderror" name="surname" value="{{ old('surname') }}">
+                                @error('surname')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
                             </div>
                             <button class="btn btn-success">Pridėti</button>
                         </form>
