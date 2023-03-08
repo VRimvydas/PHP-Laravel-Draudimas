@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Car;
 use App\Models\Owner;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use function GuzzleHttp\Promise\all;
 
 class CarController extends Controller
@@ -95,8 +96,8 @@ class CarController extends Controller
             'brand'=>'required',
             'model'=>'required'
         ],[
-            'reg_number.required'=>'Valstybinis numerį įvesti privaloma',
-            'reg_number.unique'=> 'Toks valstybinis numeris jau yra',
+//            'reg_number.required'=>'Valstybinis numerį įvesti privaloma',
+//            'reg_number.unique'=> 'Toks valstybinis numeris jau yra',
 //            'reg_number.alpha_num'=> 'Valstybinį numerį turi sudaryti tik raidės ir skaičiai',
             'reg_number.regex'=> 'Valstybinis numeris turi būti sudarytas iš 3 raidžių ir 3 skaičių',
 //            'reg_number.size'=> 'Valstybinis numeris turi būti sudarytas iš 6 simbolių',
@@ -156,4 +157,6 @@ class CarController extends Controller
 
 
     }
+
+
 }

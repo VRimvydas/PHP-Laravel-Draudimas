@@ -35,6 +35,8 @@ Route::middleware(['auth'])->group(function () {
 Route::resource('cars', CarController::class);
 Route::post('/cars/search', [CarController::class, 'search'])->name("cars.search");
 
+Route::get('/setLanguage/{lang}', [\App\Http\Controllers\LangController::class, 'setLanguage'])->name("setLanguage");
+
 
 Auth::routes();
 

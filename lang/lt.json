@@ -1,0 +1,19 @@
+{
+    "Insurance": "Draudimas",
+    "Name": "Vardas",
+    "Surname": "Pavardė",
+    "Edit": "Redaguoti",
+    "Delete": "Ištrinti",
+    "Add": "Prdėti",
+    "Owners": "Savininkai",
+    "Create new": "Kurti naują",
+    "New car": "Naujas automobilis",
+    "Cars": "Automobiliai",
+    "License plate": "Valstybinis numeris",
+
+    "Brand": "Markė",
+    "Model": "Modelis",
+    "Owner": "Savininkas",
+    "Search": "Ieškoti",
+    "has cars": "turi automobilius"
+}

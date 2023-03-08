@@ -5,31 +5,31 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Automobiliai</div>
+                    <div class="card-header">{{ __("Cars") }}</div>
 
                     <div class="card-body">
                         <div class="clearfix">
-                            <a href="{{ route("cars.create") }}" class="btn btn-success float-start">Kurti naują</a>
+                            <a href="{{ route("cars.create") }}" class="btn btn-success float-start">{{ __("New car") }}</a>
                         </div>
 
                         <hr >
                         <form method="post" action="{{ route('cars.search') }}">
                             @csrf
                             <div class="mb-3">
-                                <label class="form-label">Valst. numeris</label>
+                                <label class="form-label">{{ __("License plate") }}</label>
                                 <input class="form-control" type="text" name="reg_number" value="{{ $reg_number }}" >
                             </div>
                             <div class="mb-3">
-                                <label class="form-label">Markė</label>
+                                <label class="form-label">{{ __("Brand") }}</label>
                                 <input class="form-control" type="text" name="brand" value="{{ $brand }}" >
                             </div>
                             <div class="mb-3">
-                                <label class="form-label">Modelis</label>
+                                <label class="form-label">{{ __("Model") }}</label>
                                 <input class="form-control" type="text" name="model" value="{{ $model }}" >
                             </div>
 
                             <div class="mb-3">
-                                <label class="form-label">Savininkas</label>
+                                <label class="form-label">{{ __("Owner") }}</label>
                                 <select class="form-select" name="ownerFilter">
                                     <option value=""></option>
                                     @foreach($owners as $owner)
@@ -38,16 +38,16 @@
                                 </select>
 
                             </div>
-                            <button class="btn btn-info">Ieškoti</button>
+                            <button class="btn btn-info">{{ __("Search") }}</button>
                         </form>
                         <hr>
                         <table class="table">
                             <thead>
                             <tr>
-                                <th>Valst. numeris</th>
-                                <th>Markė</th>
-                                <th>Modelis</th>
-                                <th>Savininkas</th>
+                                <th>{{ __("License plate") }}</th>
+                                <th>{{ __("Brand") }}</th>
+                                <th>{{ __("Model") }}</th>
+                                <th>{{ __("Owner") }}</th>
                                 <th></th>
                                 <th></th>
 
@@ -61,13 +61,13 @@
                                     <td>{{ $car->model }} </td>
                                     <td>{{ $car->owner->name }} {{$car->owner->surname }} </td>
                                     <td >
-                                        <a href="{{ route("cars.edit", $car->id) }}" class="btn btn-success">Redaguoti</a>
+                                        <a href="{{ route("cars.edit", $car->id) }}" class="btn btn-success">{{ __("Edit") }}</a>
                                     </td>
                                     <td>
                                         <form method="post" action="{{ route("cars.destroy", $car->id) }}">
                                             @csrf
                                             @method("DELETE")
-                                            <button class="btn btn-danger">Ištrinti</button>
+                                            <button class="btn btn-danger">{{ __("Delete") }}</button>
                                         </form>
 
                                     </td>
